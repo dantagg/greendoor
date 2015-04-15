@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title><!-- Insert your title here --></title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+
+<!-- Optional theme -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap-theme.min.css">
+
+<!-- Latest compiled and minified JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+
+</head>
+<body>
+    <div class="container">
+        <div class="col-lg-1"> </div>
+        <div class="col-lg-8">
+            <h1>Stories</h1>
+                {% for s in stories %}
+                    <h3>{{ s.title }}</h3>
+                    <p>
+                        <span class="label label-primary label-right">{{ s.mission }}</span>&nbsp;
+                        <span class="label label-primary label-right">{{ s.get_priority_display }} priority</span>
+                    </p>
+                    <p>{{ s.description }}<p>
+                    {% for c in s.content_set.all %}
+                        <div class="panel panel-success">
+                            <div class="panel-heading">{{ c.title }}
+                                <span class="label label-success text-right">{{ c.function }}</span>
+                                <span class="label label-success text-right">{{ c.get_priority_display }} priority</span>
+                            </div>
+                            <div class="panel-body">                
+                                {{ c.description }}
+                            </div>
+                        </div>
+                    {% endfor %}
+                {% endfor %}
+        </div>
+    </div>
+
+</body>
+</html>
