@@ -46,7 +46,7 @@ class Content(models.Model):
     description = models.TextField(blank=True, null=True)
     notes =  models.TextField(blank=True, null=True)
     priority = models.CharField(max_length=256, choices=[('3', 'high'), ('2', 'medium'), ('1', 'low')])
-    type = models.ForeignKey('ContentArchetype', null=True)
+    type = models.ForeignKey('ContentArchetype', null=True, blank=True)
     
     purpose = models.CharField(max_length=256, choices=[('1', 'immediate'), ('2', 'longterm'), ('3', 'green doors')])
     story = models.ForeignKey('Story')
